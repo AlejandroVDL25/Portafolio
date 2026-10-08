@@ -485,7 +485,7 @@ footer span{display:inline-flex;align-items:center;gap:8px}
             <div class="lift-s">
               <div class="head" style="margin:0"><div class="bar o"></div></div>
               <h2>¿Tienes un proyecto de software o una red por instalar?</h2>
-              <p class="p">Respondo por WhatsApp o correo. Disponible de inmediato en Toluca, Metepec y Tianguistenco.</p>
+              <p class="p">Respondo por WhatsApp o correo. Disponible de inmediato para trabajo remoto, híbrido o presencial.</p>
               <div class="cta" style="margin-top:30px">
                 <a class="btn btn-orange" data-wa target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i>Escribir por WhatsApp</a>
                 <button class="btn btn-line" id="copyBtn"><i data-lucide="copy"></i><span class="lbl">Copiar correo</span></button>
@@ -522,7 +522,7 @@ const DATA = {
   name: "Alejandro Villafuerte Díaz Leal",
   role: "Ingeniero en Sistemas Computacionales | Desarrollador Full-Stack y Especialista en Telecomunicaciones y Redes",
   location: "Calimaya, Estado de México",
-  availability: "Disponible de inmediato en Toluca, Metepec y Tianguistenco",
+  availability: "Disponible de inmediato para trabajo remoto, híbrido o presencial",
   email: "alejovdl1225@gmail.com",
   phone: "+52 722 138 7725",
   phoneRaw: "527221387725",
@@ -636,37 +636,114 @@ const DATA = {
 /*PDF-START*/
 function buildCv(jsPDF, D) {
   const doc = new jsPDF({ unit: "mm", format: "a4" });
-  const W = 210, M = 17, MAXY = 282;
-  const BLUE = [47, 123, 255], ORANGE = [255, 122, 26], DARK = [20, 24, 32], GRAY = [92, 100, 114];
-  const clean = s => String(s).replace(/[–—]/g, "-").replace(/[“”]/g, '"');
-  let y = 0;
-  const ensure = h => { if (y + h > MAXY) { doc.addPage(); band(); y = 20; } };
-  function band() { doc.setFillColor(...ORANGE); doc.rect(0, 0, W / 2, 3, "F"); doc.setFillColor(...BLUE); doc.rect(W / 2, 0, W / 2, 3, "F"); }
+  const PW = 210, PH = 297, MAXY = 280;
+  const NAVY = [15, 19, 28], NAVY2 = [22, 27, 38];
+  const BLUE = [47, 123, 255], BLUE_L = [156, 195, 255];
+  const ORANGE = [255, 122, 26], ORANGE_L = [255, 184, 134];
+  const DARK = [24, 28, 36], GRAY = [98, 106, 120], LIGHT = [214, 220, 230];
+  const SW = 64, CX = SW + 14, CW = PW - CX - 15;
+  const clean = s => String(s).replace(/[–—]/g, "-").replace(/[""]/g, '"');
+
+  let y = 0, side = 0;
+
+  function sidebarBg() {
+    doc.setFillColor(...NAVY); doc.rect(0, 0, SW, PH, "F");
+    doc.setFillColor(...NAVY2); doc.rect(SW - 3, 0, 3, PH, "F");
+    doc.setFillColor(...ORANGE); doc.rect(SW - 1, 0, 1, PH, "F");
+    doc.setDrawColor(60, 68, 84); doc.setLineWidth(.15);
+    for (let i = 0; i < 5; i++) doc.line(6 + i * 3, PH - 14, 6 + i * 3, PH - 6);
+  }
+  function topBand() {
+    doc.setFillColor(...ORANGE); doc.rect(0, 0, PW / 2, 2.2, "F");
+    doc.setFillColor(...BLUE); doc.rect(PW / 2, 0, PW / 2, 2.2, "F");
+  }
+  function newPage() { doc.addPage(); sidebarBg(); topBand(); y = 20; side = 20; }
+
+  function ensure(h) { if (y + h > MAXY) newPage(); }
+  function ensureSide(h) { if (side + h > MAXY) { side = MAXY + 999; } }
+
   function text(str, o = {}) {
     const size = o.size || 10, indent = o.indent || 0, lh = (o.lh || 1.4) * size * 0.3528;
     doc.setFont("helvetica", o.style || "normal"); doc.setFontSize(size); doc.setTextColor(...(o.color || DARK));
-    const lines = doc.splitTextToSize(clean(str), W - 2 * M - indent);
-    lines.forEach(l => { ensure(lh); doc.text(l, M + indent, y); y += lh; });
+    const lines = doc.splitTextToSize(clean(str), CW - indent);
+    lines.forEach(l => { ensure(lh); doc.text(l, CX + indent, y); y += lh; });
   }
   function bullet(str) {
-    ensure(5); doc.setFillColor(...GRAY); doc.circle(M + 1.6, y - 1.2, 0.55, "F");
+    ensure(5); doc.setFillColor(...GRAY); doc.circle(CX + 1.6, y - 1.2, 0.55, "F");
     text(str, { size: 9.6, indent: 5, color: [45, 50, 60] });
   }
   function section(title, color) {
-    y += 5; ensure(12);
-    doc.setFillColor(...color); doc.rect(M, y - 3.6, 2.2, 4.6, "F");
-    doc.setFont("helvetica", "bold"); doc.setFontSize(12); doc.setTextColor(...DARK); doc.text(clean(title), M + 5, y);
-    doc.setDrawColor(222, 226, 232); doc.setLineWidth(0.3); doc.line(M + 5 + doc.getTextWidth(clean(title)) + 3, y - 1.3, W - M, y - 1.3);
+    y += 5.5; ensure(12);
+    doc.setFillColor(...color); doc.rect(CX, y - 3.6, 2.2, 4.6, "F");
+    doc.setFont("helvetica", "bold"); doc.setFontSize(12); doc.setTextColor(...DARK);
+    doc.text(clean(title), CX + 5, y);
+    const tw = doc.getTextWidth(clean(title));
+    doc.setDrawColor(222, 226, 232); doc.setLineWidth(0.3);
+    doc.line(CX + 5 + tw + 3, y - 1.3, CX + CW, y - 1.3);
     y += 6;
   }
-  band(); y = 20;
-  text(D.name, { size: 21, style: "bold", lh: 1.15 });
+
+  /* ── barra lateral ── */
+  function sideText(str, o = {}) {
+    const size = o.size || 9.2, lh = (o.lh || 1.45) * size * 0.3528;
+    doc.setFont("helvetica", o.style || "normal"); doc.setFontSize(size); doc.setTextColor(...(o.color || LIGHT));
+    const lines = doc.splitTextToSize(clean(str), SW - 12);
+    lines.forEach(l => { doc.text(l, 7, side); side += lh; });
+  }
+  function sideGap(h) { side += h; }
+  function sideRule(color) { doc.setDrawColor(...color); doc.setLineWidth(.5); doc.line(7, side, SW - 7, side); side += 5; }
+  function sideRow(icon, str) {
+    doc.setFillColor(...ORANGE); doc.circle(8.4, side - 1.5, .9, "F");
+    const size = 8.6, lh = 1.4 * size * 0.3528;
+    doc.setFont("helvetica", "normal"); doc.setFontSize(size); doc.setTextColor(...LIGHT);
+    const lines = doc.splitTextToSize(clean(str), SW - 15);
+    lines.forEach((l, i) => { doc.text(l, 12, side); side += lh; });
+    side += 1.6;
+  }
+  function sideChip(str) {
+    const size = 7.6; doc.setFont("helvetica", "normal"); doc.setFontSize(size);
+    const w = doc.getTextWidth(clean(str)) + 5;
+    if (this.cx + w > SW - 6) { this.cx = 7; side += 7.5; }
+    doc.setDrawColor(90, 110, 150); doc.setLineWidth(.25);
+    doc.roundedRect(this.cx, side - 4.3, w, 5.6, 1.4, 1.4);
+    doc.setTextColor(...BLUE_L); doc.text(clean(str), this.cx + 2.5, side - .55);
+    this.cx += w + 2.5;
+  }
+
+  /* ═══ construir ═══ */
+  sidebarBg(); topBand(); y = 20; side = 22;
+
+  sideText(D.name.toUpperCase(), { size: 15.5, style: "bold", color: [255, 255, 255], lh: 1.2 });
+  sideGap(2.5);
+  sideText(D.role, { size: 8.4, color: ORANGE_L, lh: 1.5 });
+  sideGap(4); sideRule(ORANGE);
+
+  sideText("CONTACTO", { size: 8, style: "bold", color: BLUE_L }); sideGap(2.5);
+  sideRow("m", D.email);
+  sideRow("t", D.phone);
+  sideRow("p", D.location + ", México");
+  sideRow("l", D.linkedin.replace("https://", ""));
+  sideRow("g", D.github.replace("https://", ""));
+  sideGap(1.5); sideText(D.availability + ".", { size: 7.8, style: "italic", color: [150, 200, 255], lh: 1.5 });
+  sideGap(4); sideRule(BLUE);
+
+  sideText("PERFILES", { size: 8, style: "bold", color: BLUE_L }); sideGap(2.8);
+  sideText("Full-Stack y Cloud", { size: 8.6, style: "bold", color: [255, 255, 255] }); sideGap(1);
+  sideText("Next.js · React · TypeScript · Supabase · AWS", { size: 7.6, color: [160, 170, 185], lh: 1.4 }); sideGap(3.5);
+  sideText("Telecom y Redes", { size: 8.6, style: "bold", color: [255, 255, 255] }); sideGap(1);
+  sideText("Fibra óptica FTTH · Cobre · OTDR · Certificado Telmex", { size: 7.6, color: [160, 170, 185], lh: 1.4 });
+  sideGap(4); sideRule(ORANGE);
+
+  sideText("HABILIDADES CLAVE", { size: 8, style: "bold", color: BLUE_L }); sideGap(3);
+  const chipObj = { cx: 7 };
+  ["Next.js", "React 19", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "AWS", "FTTH", "OTDR", "Cobre", "Scrum", "Git"]
+    .forEach(s => sideChip.call(chipObj, s));
+
+  /* ═══ columna principal ═══ */
+  text(D.name, { size: 21, style: "bold", lh: 1.15, color: DARK });
   y += 1;
   text(D.role, { size: 10.5, color: BLUE, lh: 1.35 });
-  y += 1;
-  text(`${D.email}   |   ${D.phone}   |   ${D.location}, México`, { size: 9, color: GRAY });
-  text(`LinkedIn: ${D.linkedin.replace("https://", "")}   |   GitHub: ${D.github.replace("https://", "")}`, { size: 9, color: GRAY });
-  text(D.availability + ".", { size: 9, color: ORANGE });
+  y += 2;
 
   section("Resumen", BLUE);
   text(D.summary, { size: 9.8, color: [45, 50, 60] });
@@ -703,8 +780,10 @@ function buildCv(jsPDF, D) {
   text(`${D.education.school}  ·  ${D.education.period}`, { size: 9.2, color: GRAY });
   y += 1.5;
   D.certs.forEach(c => bullet(`${c.title} (${c.issuer}, ${c.date})`));
+
   return doc;
 }
+
 /*PDF-END*/
 
 /* ════════════════════════════ APP ════════════════════════════ */
