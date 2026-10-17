@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -11,6 +11,17 @@
 <meta property="og:description" content="Desarrollador Full-Stack y especialista en fibra óptica FTTH y redes.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
+<meta property="og:url" content="https://portafolio-alexvdl.vercel.app/">
+<meta property="og:image" content="https://portafolio-alexvdl.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Alejandro Villafuerte Díaz Leal">
+<link rel="canonical" href="https://portafolio-alexvdl.vercel.app/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Alejandro Villafuerte Díaz Leal","jobTitle":"Desarrollador Full-Stack y especialista en telecomunicaciones","url":"https://portafolio-alexvdl.vercel.app/","email":"mailto:alejovdl1225@gmail.com","telephone":"+52 722 138 7725","address":{"@type":"PostalAddress","addressLocality":"Calimaya","addressRegion":"Estado de México","addressCountry":"MX"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Tecnológico de Estudios Superiores de Tianguistenco"},"knowsAbout":["Next.js","React","TypeScript","PostgreSQL","Supabase","Fibra óptica FTTH"],"sameAs":["https://github.com/AlejandroVDL25","https://www.linkedin.com/in/alejandro-villafuerte-d%C3%ADaz-leal-40837843a"]}
+</script>
+<script>document.documentElement.classList.add("js")</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,9 +140,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .head h2{font-family:var(--f-display);font-weight:650;font-size:clamp(2rem,4.6vw,3.25rem);line-height:1.04;letter-spacing:-.035em;margin:0;color:#fff}
 .head p{margin:16px 0 0;color:var(--muted);font-size:1.08rem;max-width:36em}
 
-.reveal{opacity:0;transform:perspective(1100px) translate3d(0,44px,-70px) rotateX(16deg);transform-origin:50% 100%;transition:opacity .8s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
-.reveal.left{transform:perspective(1100px) translate3d(-34px,0,-70px) rotateY(20deg);transform-origin:0 50%}
-.reveal.in{opacity:1;transform:none}
+html.js .reveal{opacity:0;transform:perspective(1100px) translate3d(0,44px,-70px) rotateX(16deg);transform-origin:50% 100%;transition:opacity .8s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+html.js .reveal.left{transform:perspective(1100px) translate3d(-34px,0,-70px) rotateY(20deg);transform-origin:0 50%}
+html.js .reveal.in{opacity:1;transform:none}
+/* Las tarjetas aún ocultas tienen una proyección 3D que puede cubrir la página: no deben captar clics hasta aparecer */
+html.js .reveal:not(.in){pointer-events:none}
 
 /* ───── tarjetas 3D ───── */
 .card{--tone:var(--blue-rgb);position:relative;height:100%;border-radius:20px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.018));transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transform-style:preserve-3d;transition:transform .45s var(--ease),border-color .3s,box-shadow .4s}
@@ -204,7 +217,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .step p{margin:4px 0 0;font-size:14px;color:var(--muted)}
 .methods{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px;padding:18px 20px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
 .methods strong{font-weight:500;color:#cfd6e0;margin-right:6px;font-size:14.5px}
-.methods span{padding:6px 12px;border-radius:10px;border:1px solid var(--line);font-size:14px;color:#cfd6e0}
+.methods>span{padding:6px 12px;border-radius:10px;border:1px solid var(--line);font-size:14px;color:#cfd6e0}
 .fade-swap{animation:fadeSwap .55s var(--ease)}
 @keyframes fadeSwap{from{opacity:0;transform:perspective(900px) rotateY(-10deg) translateX(20px)}}
 
@@ -336,15 +349,85 @@ footer span{display:inline-flex;align-items:center;gap:8px}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);z-index:120;transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:12px 18px;border-radius:14px;border:1px solid var(--line2);background:rgba(15,17,21,.95);color:#fff;font-size:14.5px;box-shadow:0 20px 50px -20px #000;transition:opacity .3s,transform .4s var(--ease);max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
+
+/* ═════════ AÑADIDOS ═════════ */
+.skip{position:fixed;left:16px;top:-80px;z-index:200;padding:10px 16px;border-radius:12px;background:var(--orange);color:#1a0c02;font-weight:600}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 12px)}
+.noscript{max-width:640px;margin:120px auto;padding:24px;border:1px solid var(--line2);border-radius:20px;text-align:center;color:var(--muted)}
+
+/* niveles de habilidad */
+.chip{display:inline-flex;align-items:center;gap:8px}
+.lv{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:rgb(var(--tone));box-shadow:0 0 8px rgba(var(--tone),.8)}
+.lv.basico{background:transparent;border:1.5px solid rgba(var(--tone),.85);box-shadow:none}
+.lv.desarrollo{background:transparent;border:1.5px dashed rgb(var(--tone));box-shadow:none}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:18px 0 0;padding:0;list-style:none;font-size:13.5px;color:var(--muted)}
+.legend li{display:inline-flex;align-items:center;gap:8px;--tone:var(--blue-rgb)}
+.where{display:flex;gap:8px;margin:16px 0 0;font-size:13.5px;color:var(--dim);line-height:1.5}
+.where .lucide{font-size:15px;margin-top:2px;color:rgb(var(--tone))}
+
+/* caso de estudio dentro del modal */
+.case{margin-top:30px;padding-top:26px;border-top:1px solid var(--line)}
+.case>h4{font-family:var(--f-display);font-size:18px;font-weight:600;color:#fff;margin:0 0 14px}
+.case-grid{display:grid;gap:10px}
+@media(min-width:720px){.case-grid{grid-template-columns:repeat(3,1fr)}}
+.case-box{padding:16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.case-box b{display:flex;align-items:center;gap:8px;color:#fff;font-weight:500;font-size:14.5px}
+.case-box b .lucide{color:rgb(var(--tone));font-size:16px}
+.case-box p{margin:8px 0 0;font-size:14px;color:var(--muted);line-height:1.55}
+.case-box.wide{grid-column:1/-1}
+.case-box ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px;font-size:14px;color:var(--muted)}
+.case-box li::marker{color:rgb(var(--tone))}
+
+/* servicios */
+.svc h3{margin-top:20px;font-size:18.5px}
+.svc p{margin:8px 0 0;font-size:14.5px;line-height:1.55}
+.svc-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
+.svc-cta h3{font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.25;max-width:30ch}
+.svc-cta p{margin:6px 0 0;font-size:14px}
+
+/* formulario */
+.form-wrap{margin-top:20px}
+.form-grid{display:grid;gap:30px}
+@media(min-width:1000px){.form-grid{grid-template-columns:1fr 1.25fr}}
+.pitches{display:grid;gap:12px;align-content:start}
+.pitches .facet p{font-size:15px;color:#dbe1ea;line-height:1.5}
+.pitches .facet span{display:block;margin-top:6px;font-size:13px;color:var(--dim)}
+.form h3{font-size:clamp(1.3rem,2.4vw,1.6rem)}
+.form>p{margin:6px 0 22px;color:var(--muted);font-size:14.5px}
+.frow{display:grid;gap:0 14px}
+@media(min-width:620px){.frow{grid-template-columns:1fr 1fr}}
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label{font-size:14px;font-weight:500;color:#dbe1ea}
+.field label i{font-style:normal;color:var(--orange2)}
+.field input,.field select,.field textarea{width:100%;min-height:46px;padding:11px 14px;border-radius:12px;border:1px solid var(--line2);background:rgba(255,255,255,.04);color:var(--text);font:inherit;font-size:15px;transition:border-color .2s,box-shadow .2s,background .2s}
+.field select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:38px}
+.field select option{background:var(--bg2);color:var(--text)}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue2);background:rgba(var(--blue-rgb),.06);box-shadow:0 0 0 3px rgba(var(--blue-rgb),.22)}
+.field [aria-invalid="true"]{border-color:#ff6b6b}
+.err{font-size:13px;color:#ff8f8f}
+.err:empty{display:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.f-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.f-status{margin-top:16px;padding:12px 14px;border-radius:12px;font-size:14px}
+.f-status:empty{display:none}
+.f-status.ok{border:1px solid rgba(var(--blue-rgb),.5);background:rgba(var(--blue-rgb),.1);color:#dbe6ff}
+.f-status.bad{border:1px solid rgba(255,107,107,.5);background:rgba(255,107,107,.08);color:#ffd2d2}
+.f-note{margin:14px 0 0;font-size:12.5px;color:var(--dim)}
+.privacy{max-width:80ch;margin:14px 0 0;font-size:13px;color:var(--dim)}
+.privacy a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important}
-  .reveal,.reveal.left{opacity:1;transform:none;transition:none}
+  html.js .reveal,html.js .reveal.left{opacity:1;transform:none;transition:none}
   .card,.hero-content{transform:none!important}
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#perfil">Saltar al contenido</a>
+<noscript><div class="noscript">Este portafolio necesita JavaScript para mostrar su contenido. Puedes escribirme a <a href="mailto:alejovdl1225@gmail.com">alejovdl1225@gmail.com</a>.</div></noscript>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="nav-wrap">
@@ -415,12 +498,17 @@ footer span{display:inline-flex;align-items:center;gap:8px}
       <div class="head reveal">
         <div class="bar"></div>
         <h2>Competencias técnicas</h2>
-        <p>Cambia de pestaña para ver cada faceta. Arrastra la esfera para girarla: el azul es software, el naranja es infraestructura.</p>
+        <p>Cambia de pestaña para ver cada faceta. Arrastra la esfera para girarla: el azul es software, el naranja es infraestructura. Cada tecnología indica mi nivel real, sin porcentajes inventados.</p>
       </div>
       <div class="reveal">
         <div class="tabs" role="tablist" aria-label="Áreas de competencia" id="tabs">
           <span class="tab-pill" id="tabPill" aria-hidden="true"></span>
         </div>
+        <ul class="legend" aria-label="Qué significa cada nivel">
+          <li><span class="lv"></span>Experiencia práctica: la he usado en proyectos reales</li>
+          <li><span class="lv basico"></span>Conocimientos básicos: cursos o formación</li>
+          <li><span class="lv desarrollo"></span>En desarrollo: la estoy reforzando</li>
+        </ul>
       </div>
       <div class="skills-grid" id="skillsPanel" role="tabpanel">
         <div class="reveal">
@@ -456,7 +544,7 @@ footer span{display:inline-flex;align-items:center;gap:8px}
       <div class="head reveal">
         <div class="bar"></div>
         <h2>Proyectos destacados</h2>
-        <p>Filtra por tipo y abre cada proyecto para ver su arquitectura en capas.</p>
+        <p>Filtra por tipo y abre cada proyecto para ver su arquitectura en capas y el caso de estudio: objetivo, mi contribución, desafíos y resultado.</p>
       </div>
       <div class="filters reveal" role="group" aria-label="Filtrar proyectos" id="filters"></div>
       <div class="projects" id="projects"></div>
@@ -472,6 +560,18 @@ footer span{display:inline-flex;align-items:center;gap:8px}
         <h2>Formación y certificaciones</h2>
       </div>
       <div class="bento" id="edu"></div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="block">
+    <div class="wrap">
+      <div class="head reveal">
+        <div class="bar o"></div>
+        <h2>Servicios</h2>
+        <p>Si tienes un negocio o un proyecto, estas son las formas en que puedo ayudarte hoy. Cada trabajo se cotiza según su alcance, con comunicación clara de principio a fin.</p>
+      </div>
+      <div class="bento" id="services"></div>
     </div>
   </section>
 
@@ -496,6 +596,38 @@ footer span{display:inline-flex;align-items:center;gap:8px}
           </div>
         </div>
       </div>
+
+      <div class="reveal form-wrap">
+        <div class="card r-xl pad pad-l" data-tilt="0">
+          <div class="form-grid">
+            <div class="pitches">
+              <div class="facet t-b"><b><i data-lucide="briefcase"></i> Reclutadores y equipos</b><p>¿Buscas a alguien con iniciativa, fundamentos técnicos y ganas de seguir creciendo? Hablemos.</p></div>
+              <div class="facet t-o"><b><i data-lucide="store"></i> Negocios y clientes</b><p>¿Tienes una idea o necesitas mejorar tu sitio web? Conversemos sobre tu proyecto.</p></div>
+            </div>
+            <form class="form" id="contactForm" novalidate aria-labelledby="fTitle">
+              <h3 id="fTitle">Envíame un mensaje</h3>
+              <p>Al enviarlo se abre tu app de correo o WhatsApp con el mensaje listo. Me llega cuando lo mandes desde ahí.</p>
+              <div class="frow">
+                <div class="field"><label for="fName">Nombre <i aria-hidden="true">*</i></label><input id="fName" name="nombre" autocomplete="name" maxlength="80" required aria-describedby="eName"><span class="err" id="eName"></span></div>
+                <div class="field"><label for="fMail">Correo electrónico <i aria-hidden="true">*</i></label><input id="fMail" name="correo" type="email" autocomplete="email" maxlength="120" required aria-describedby="eMail"><span class="err" id="eMail"></span></div>
+              </div>
+              <div class="field"><label for="fType">Tipo de consulta <i aria-hidden="true">*</i></label>
+                <select id="fType" name="tipo" required aria-describedby="eType">
+                  <option value="">Selecciona una opción</option>
+                  <option>Oportunidad laboral</option><option>Proyecto web</option><option>Instalación o red</option><option>Colaboración</option><option>Otro</option>
+                </select><span class="err" id="eType"></span></div>
+              <div class="field"><label for="fMsg">Mensaje <i aria-hidden="true">*</i></label><textarea id="fMsg" name="mensaje" maxlength="2000" required aria-describedby="eMsg"></textarea><span class="err" id="eMsg"></span></div>
+              <div class="hp" aria-hidden="true"><label for="fWeb">No llenes este campo</label><input id="fWeb" name="sitio" tabindex="-1" autocomplete="off"></div>
+              <div class="f-actions">
+                <button class="btn btn-blue" type="submit"><i data-lucide="mail"></i>Preparar correo</button>
+                <button class="btn btn-line-o" type="button" id="fWa"><i data-lucide="message-circle"></i>Enviar por WhatsApp</button>
+              </div>
+              <div class="f-status" id="fStatus" role="status" aria-live="polite"></div>
+              <p class="f-note">Este formulario no guarda tus datos ni usa un servidor.</p>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </main>
@@ -505,6 +637,7 @@ footer span{display:inline-flex;align-items:center;gap:8px}
     <span id="copy"></span>
     <span><i data-lucide="map-pin"></i>Calimaya, Estado de México, México</span>
   </div>
+  <div class="wrap"><p class="privacy"><b>Aviso de privacidad.</b> Este sitio no usa cookies ni analítica. Los datos del formulario solo se usan para preparar tu mensaje en tu app de correo o en WhatsApp. Dudas: <a href="mailto:alejovdl1225@gmail.com">alejovdl1225@gmail.com</a>.</p></div>
 </footer>
 
 <dialog class="modal" id="modal" aria-labelledby="mTitle" aria-describedby="mSub">
@@ -526,8 +659,10 @@ const DATA = {
   email: "alejovdl1225@gmail.com",
   phone: "+52 722 138 7725",
   phoneRaw: "527221387725",
-  linkedin: "https://linkedin.com/in/alexvillafuerteleal",
-  github: "https://github.com/alexvillafuerteleal",
+  /* Si se deja vacío (""), LinkedIn se oculta en todo el sitio y en el PDF. */
+  linkedin: "https://www.linkedin.com/in/alejandro-villafuerte-d%C3%ADaz-leal-40837843a",
+  github: "https://github.com/AlejandroVDL25",
+  githubUser: "AlejandroVDL25",
   summary: "Ingeniero en Sistemas Computacionales con doble perfil estratégico: desarrollo de software Full-Stack moderno (Next.js, TypeScript, cloud e IA) e infraestructura física de telecomunicaciones (fibra óptica FTTH y redes de cobre). Proactivo y enfocado en resolver problemas, tanto en el código como en campo.",
   highlights: [
     { tone: "b", icon: "sparkles", title: "Residencia profesional", text: "Desarrollo de la plataforma PagoIA con Next.js 16, React 19, Stripe e inteligencia artificial.", href: "#proyectos", link: "Ver proyecto" },
@@ -539,27 +674,33 @@ const DATA = {
       label: "Software y nube", icon: "code", tone: "b",
       sphere: ["Next.js 16","React 19","TypeScript","Node.js","HTML5","CSS3","Tailwind CSS","Radix UI","Supabase","JWT","RLS","APIs REST","Stripe","HMAC-SHA256","Web Push","AWS","Vercel","Netlify","PostgreSQL","MySQL","SQL","Java","Python","JavaScript","Git"],
       groups: [
-        { title: "Desarrollo Full-Stack", icon: "layers", items: ["Next.js 16 (Turbopack)","React 19","TypeScript (modo estricto)","Node.js","HTML5 / CSS3","Tailwind CSS","Radix UI"] },
-        { title: "Backend y servicios cloud", icon: "cloud", items: ["Supabase (Auth JWT, RLS)","APIs REST","Stripe Checkout (HMAC-SHA256)","Web Push API","AWS (servicios core)","Vercel","Netlify"] },
-        { title: "Bases de datos y lenguajes", icon: "database", items: ["PostgreSQL","MySQL","SQL","Java","Python","JavaScript"] }
+        { title: "Desarrollo Full-Stack", icon: "layers", where: "PagoIA (Next.js, React, TypeScript) y catálogo de CAVA (HTML, Tailwind).", items: ["Next.js 16 (Turbopack)","React 19","TypeScript (modo estricto)","Node.js","HTML5 / CSS3","Tailwind CSS","Radix UI"] },
+        { title: "Backend y servicios cloud", icon: "cloud", where: "Supabase, Stripe y Web Push en PagoIA; Vercel y Netlify en mis despliegues; AWS por curso.", items: ["Supabase (Auth JWT, RLS)","APIs REST","Stripe Checkout (HMAC-SHA256)","Web Push API","AWS (servicios core)","Vercel","Netlify"] },
+        { title: "Bases de datos y lenguajes", icon: "database", where: "PostgreSQL con RLS en PagoIA; Java, Python y MySQL en formación académica.", items: ["PostgreSQL","MySQL","SQL","Java","Python","JavaScript"] }
       ]
     },
     telecom: {
       label: "Telecom y redes", icon: "radio", tone: "o",
-      sphere: ["FTTH","Fibra óptica","Cobre","Empalmes","Fusión óptica","OTDR","Potencia óptica","Modelo OSI","TCP/IP","Cableado estructurado","Telmex 90000","Telmex 90002","Diagnóstico","Activación","Redes"],
+      sphere: ["FTTH","Fibra óptica","Cobre","Empalmes","Fusión óptica","Potencia óptica","Modelo OSI","TCP/IP","Cableado estructurado","Telmex 90000","Telmex 90002","Diagnóstico","Activación","Redes"],
       groups: [
-        { title: "Redes y telecomunicaciones", icon: "network", items: ["Fibra óptica FTTH","Redes de cobre","Empalmes y fusión","Medición OTDR","Medidor de potencia óptica","Modelo OSI","TCP/IP","Cableado estructurado"] },
-        { title: "Certificaciones Telmex", icon: "shield-check", items: ["Clave 90000: línea de cliente óptica","Clave 90002: servicios en cobre"] }
+        { title: "Redes y telecomunicaciones", icon: "network", where: "Trabajo de campo como contratista autorizado Telmex; fundamentos por curso de Redes y TCP/IP.", items: ["Fibra óptica FTTH","Redes de cobre","Empalmes y fusión","Medidor de potencia óptica","Modelo OSI","TCP/IP","Cableado estructurado"] },
+        { title: "Certificaciones Telmex", icon: "shield-check", where: "Obtenidas en enero de 2026.", items: ["Clave 90000: línea de cliente óptica","Clave 90002: servicios en cobre"] }
       ],
       process: [
         { title: "Fusión y empalme", text: "Preparación y fusión de la fibra con equipo de empalme óptico." },
-        { title: "Medición", text: "Verificación con medidor de potencia óptica y OTDR." },
+        { title: "Medición", text: "Verificación de la señal con medidor de potencia óptica." },
         { title: "Activación", text: "Alta del servicio FTTH o cobre y pruebas con el cliente." },
         { title: "Cierre", text: "Orden de trabajo, material utilizado y asesoría al usuario." }
       ]
     }
   },
   methods: ["Git / GitHub","Scrum (Ágil)","Microsoft Power BI","Microsoft Excel"],
+  /* EDITAR niveles: "basico" = Conocimientos básicos, "desarrollo" = En desarrollo. Lo que no aparezca aquí se muestra como Experiencia práctica. */
+  levels: {
+    "AWS (servicios core)": "basico", "MySQL": "basico", "Java": "basico", "Python": "basico",
+    "Modelo OSI": "basico", "TCP/IP": "basico",
+    "Scrum (Ágil)": "basico", "Microsoft Power BI": "basico"
+  },
   experience: [
     { role: "Desarrollador Full-Stack (Residencia Profesional)", company: "PagoIA Soluciones Tecnológicas S.A. de C.V.", period: "Ene 2026 – Jun 2026", tone: "b", icon: "code",
       summary: "Construí la plataforma PagoIA para la gestión de cobros recurrentes.",
@@ -598,7 +739,13 @@ const DATA = {
         { icon: "credit-card", label: "Pagos", detail: "Stripe Checkout (PCI-DSS Level 1) y webhooks verificados con HMAC-SHA256." },
         { icon: "bell", label: "Notificaciones", detail: "Web Push API con llaves VAPID para avisos en tiempo real." },
         { icon: "bot", label: "Asistente IA", detail: "Responde consultas de cobros en lenguaje natural." }
-      ] },
+      ],
+      caseStudy: {
+        goal: "Crear una plataforma para que los negocios gestionen cobros recurrentes, con pagos en línea, avisos oportunos y soporte automatizado.",
+        role: "Durante mi residencia (enero a junio de 2026) desarrollé los seis componentes principales y configuré el despliegue continuo en Vercel.",
+        result: "Seis componentes entregados en seis meses, publicados con CI/CD y con un dashboard de ingresos y transacciones.",
+        challenges: ["Aislar los datos de cada usuario con políticas Row Level Security en PostgreSQL.", "Aceptar solo eventos de pago auténticos verificando los webhooks de Stripe con HMAC-SHA256.", "Enviar avisos en tiempo real con Web Push API y llaves VAPID."]
+      } },
     { id: "cava", title: "CAVA Comercializadora", subtitle: "Catálogo industrial B2B", categories: ["B2B"], tone: "o", visual: "catalog",
       description: "Plataforma web con más de 20 marcas industriales, panel de administración interno y cotizador automático.",
       stack: ["HTML5","CSS3","JavaScript ES6+","Tailwind CSS","Netlify","WhatsApp API"],
@@ -609,17 +756,29 @@ const DATA = {
         { icon: "workflow", label: "Cotizador", detail: "Arma el pedido y lo envía por WhatsApp Click to Chat." },
         { icon: "cloud", label: "Hosting", detail: "Despliegue continuo en Netlify." }
       ],
-      link: { href: "https://cava-comerzializadora.com", label: "Ver sitio en vivo" } },
+      link: { href: "https://cava-comerzializadora.com", label: "Ver sitio en vivo" },
+      caseStudy: {
+        goal: "Mostrar el catálogo industrial del negocio en línea y recibir solicitudes de cotización sin procesos manuales.",
+        role: "Desarrollé y publiqué el sitio, lo mantengo con despliegue continuo y asesoro al cliente en su expansión a Mercado Libre y Amazon.",
+        result: "Sitio en producción con dominio propio; el cliente actualiza su catálogo sin depender de un programador.",
+        challenges: ["Dar autonomía al cliente con un panel de productos, marcas y categorías con respaldos en JSON.", "Llevar cada cotización al WhatsApp que el negocio ya usa a diario, mediante Click to Chat."]
+      } },
     { id: "ftth", title: "Instalaciones FTTH y cobre", subtitle: "Trabajo en campo como contratista Telmex", categories: ["Redes"], tone: "o", visual: "fiber",
       description: "Instalación, activación y mantenimiento de líneas de fibra y cobre en hogares y empresas.",
-      stack: ["FTTH","Fusión óptica","Potencia óptica","OTDR","Cobre","Cableado estructurado"],
+      stack: ["FTTH","Fusión óptica","Potencia óptica","Cobre","Cableado estructurado"],
       highlights: ["Entornos residenciales y corporativos","Diagnóstico con medición óptica","Atención directa al cliente"],
       architecture: [
         { icon: "cable", label: "Acometida", detail: "Tendido de la línea de cliente óptica o de cobre." },
         { icon: "zap", label: "Fusión", detail: "Empalme de la fibra con equipo de fusión óptica." },
-        { icon: "gauge", label: "Medición", detail: "Verificación con medidor de potencia óptica y OTDR." },
+        { icon: "gauge", label: "Medición", detail: "Verificación de la señal con medidor de potencia óptica." },
         { icon: "check", label: "Activación", detail: "Alta del servicio, pruebas y asesoría al cliente." }
-      ] }
+      ],
+      caseStudy: {
+        goal: "Dejar servicios de fibra óptica y cobre funcionando en hogares y empresas, bajo los estándares de Telmex.",
+        role: "Instalación, activación y diagnóstico como contratista autorizado, con las certificaciones 90000 y 90002.",
+        result: "Cada servicio se cierra con su orden de trabajo, el material registrado y el cliente asesorado.",
+        challenges: ["Confirmar la calidad de la señal con medición de potencia óptica antes de cerrar el servicio.", "Explicar al cliente, en palabras simples, cómo funciona su servicio al terminar."]
+      } }
   ],
   education: { degree: "Ingeniería en Sistemas Computacionales", school: "Tecnológico de Estudios Superiores de Tianguistenco", period: "Sep 2020 – Jul 2026" },
   certs: [
@@ -628,7 +787,15 @@ const DATA = {
     { title: "Introducción a Redes y TCP/IP", issuer: "Curso", date: "Jun 2023", tone: "o", icon: "network" },
     { title: "Introducción a la Nube y AWS", issuer: "Curso", date: "May 2023", tone: "b", icon: "cloud" }
   ],
-  terminal: ["construyendo con Next.js 16 y React 19","fusionando fibra óptica FTTH en campo","protegiendo datos con Supabase RLS","midiendo potencia óptica y OTDR","desplegando en Vercel y AWS"]
+  services: [
+    { icon: "monitor", tone: "b", title: "Sitios web a la medida", text: "Del diseño a la publicación con tu dominio: rápidos, responsivos y fáciles de actualizar." },
+    { icon: "store", tone: "o", title: "Catálogos con cotización por WhatsApp", text: "Tus productos por marca y categoría, con pedidos que llegan directo a tu WhatsApp." },
+    { icon: "smartphone", tone: "b", title: "Adaptación a celulares y mejoras", text: "Que tu sitio actual se vea y funcione bien en cualquier pantalla, sin empezar de cero." },
+    { icon: "sparkles", tone: "b", title: "Animaciones e interacciones 3D", text: "Movimiento que acompaña tu contenido sin hacer lento el sitio." },
+    { icon: "wrench", tone: "o", title: "Mantenimiento y revisión funcional", text: "Reviso enlaces, formularios y rendimiento, y corrijo lo que falle." },
+    { icon: "network", tone: "o", title: "Fibra óptica y cobre", text: "Instalación, activación y diagnóstico de líneas FTTH y de cobre, con certificación Telmex 90000 y 90002." }
+  ],
+  terminal: ["construyendo con Next.js 16 y React 19","fusionando fibra óptica FTTH en campo","protegiendo datos con Supabase RLS","midiendo potencia óptica en campo","desplegando en Vercel y AWS"]
 };
 /*DATA-END*/
 
@@ -722,7 +889,7 @@ function buildCv(jsPDF, D) {
   sideRow("m", D.email);
   sideRow("t", D.phone);
   sideRow("p", D.location + ", México");
-  sideRow("l", D.linkedin.replace("https://", ""));
+  if (D.linkedin) sideRow("l", decodeURIComponent(D.linkedin.replace(/^https?:\/\/(www\.)?/, "")));
   sideRow("g", D.github.replace("https://", ""));
   sideGap(1.5); sideText(D.availability + ".", { size: 7.8, style: "italic", color: [150, 200, 255], lh: 1.5 });
   sideGap(4); sideRule(BLUE);
@@ -731,12 +898,12 @@ function buildCv(jsPDF, D) {
   sideText("Full-Stack y Cloud", { size: 8.6, style: "bold", color: [255, 255, 255] }); sideGap(1);
   sideText("Next.js · React · TypeScript · Supabase · AWS", { size: 7.6, color: [160, 170, 185], lh: 1.4 }); sideGap(3.5);
   sideText("Telecom y Redes", { size: 8.6, style: "bold", color: [255, 255, 255] }); sideGap(1);
-  sideText("Fibra óptica FTTH · Cobre · OTDR · Certificado Telmex", { size: 7.6, color: [160, 170, 185], lh: 1.4 });
+  sideText("Fibra óptica FTTH · Cobre · Potencia óptica · Certificado Telmex", { size: 7.6, color: [160, 170, 185], lh: 1.4 });
   sideGap(4); sideRule(ORANGE);
 
   sideText("HABILIDADES CLAVE", { size: 8, style: "bold", color: BLUE_L }); sideGap(3);
   const chipObj = { cx: 7 };
-  ["Next.js", "React 19", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "AWS", "FTTH", "OTDR", "Cobre", "Scrum", "Git"]
+  ["Next.js", "React 19", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "AWS", "FTTH", "Cobre", "Potencia óptica", "Scrum", "Git"]
     .forEach(s => sideChip.call(chipObj, s));
 
   /* ═══ columna principal ═══ */
@@ -795,8 +962,10 @@ function buildCv(jsPDF, D) {
   const ic = n => `<i data-lucide="${n}"></i>`;
   const icons = () => { if (window.lucide) window.lucide.createIcons({ attrs: { "stroke-width": 1.8 } }); };
   const T = t => (t === "o" ? "o" : "b");
+  const LEVEL = n => (DATA.levels && DATA.levels[n]) || "";
+  const LVTXT = { "": "experiencia práctica", basico: "conocimientos básicos", desarrollo: "en desarrollo" };
   const WA = `https://wa.me/${DATA.phoneRaw}?text=${encodeURIComponent("Hola Alejandro, vi tu portafolio y me gustaría platicar contigo.")}`;
-  const SECTIONS = [["inicio","Inicio"],["perfil","Perfil"],["habilidades","Habilidades"],["experiencia","Experiencia"],["proyectos","Proyectos"],["formacion","Formación"],["contacto","Contacto"]];
+  const SECTIONS = [["inicio","Inicio"],["perfil","Perfil"],["habilidades","Habilidades"],["experiencia","Experiencia"],["proyectos","Proyectos"],["formacion","Formación"],["servicios","Servicios"],["contacto","Contacto"]];
 
   /* ─── toast ─── */
   const toastEl = $("#toast"); let toastT;
@@ -806,7 +975,7 @@ function buildCv(jsPDF, D) {
   $("#availability").textContent = DATA.availability;
   $$("[data-wa]").forEach(a => a.href = WA); $("#navWa").href = WA;
   $$("[data-mail]").forEach(a => a.href = `mailto:${DATA.email}`);
-  $$("[data-li]").forEach(a => a.href = DATA.linkedin);
+  $$("[data-li]").forEach(a => { if (DATA.linkedin) a.href = DATA.linkedin; else a.remove(); });
   $$("[data-gh]").forEach(a => a.href = DATA.github);
   $("#copy").textContent = `© ${new Date().getFullYear()} ${DATA.name}`;
 
@@ -1140,7 +1309,8 @@ function buildCv(jsPDF, D) {
       groupsEl.innerHTML = t.groups.map((g, i) => `
         <div class="fade-swap" style="animation-delay:${i * 70}ms;animation-fill-mode:backwards"><div class="card ${o ? "o" : ""} pad" data-tilt="7">
           <div class="g-head lift-s"><span class="ibox t-${o ? "o" : "b"}">${ic(g.icon)}</span><h3>${esc(g.title)}</h3></div>
-          <ul class="chips">${g.items.map(s => `<li class="chip">${esc(s)}</li>`).join("")}</ul>
+          <ul class="chips">${g.items.map(s => { const lv = LEVEL(s); return `<li class="chip"><span class="lv ${lv}" aria-hidden="true"></span>${esc(s)}<span class="sr-only"> (${LVTXT[lv]})</span></li>`; }).join("")}</ul>
+          ${g.where ? `<p class="where">${ic("briefcase")}<span>${esc(g.where)}</span></p>` : ""}
         </div></div>`).join("") + (t.process ? `
         <div class="fade-swap" style="animation-delay:${t.groups.length * 70}ms;animation-fill-mode:backwards"><div class="card o pad" data-tilt="6">
           <div class="g-head lift-s"><span class="ibox t-o">${ic("workflow")}</span><h3>Cómo trabajo en campo</h3></div>
@@ -1157,7 +1327,7 @@ function buildCv(jsPDF, D) {
     const next = tabKeys[(cur + (e.key === "ArrowRight" ? 1 : -1) + tabKeys.length) % tabKeys.length];
     renderSkills(next); $(`#tab-${next}`).focus(); e.preventDefault();
   });
-  DATA.methods.forEach(m => $("#methods").insertAdjacentHTML("beforeend", `<span>${esc(m)}</span>`));
+  DATA.methods.forEach(m => { const lv = LEVEL(m); $("#methods").insertAdjacentHTML("beforeend", `<span class="chip" style="--tone:var(--blue-rgb)"><span class="lv ${lv}" aria-hidden="true"></span>${esc(m)}<span class="sr-only"> (${LVTXT[lv]})</span></span>`); });
 
   /* ─── experiencia (timeline) ─── */
   const tlList = $("#tlList");
@@ -1236,7 +1406,7 @@ function buildCv(jsPDF, D) {
           <p class="desc">${esc(p.description)}</p>
           <ul class="stack-tags">${p.stack.map(s => `<li>${esc(s)}</li>`).join("")}</ul>
           <div class="pactions lift-s">
-            <button class="btn btn-line btn-sm" data-open="${p.id}">${ic("layers")}Ver arquitectura</button>
+            <button class="btn btn-line btn-sm" data-open="${p.id}">${ic("layers")}Ver arquitectura y caso</button>
             ${p.link ? `<a class="link ${t}" href="${p.link.href}" target="_blank" rel="noopener noreferrer">${esc(p.link.label)} ${ic("external-link")}</a>` : ""}
           </div>
         </div>
@@ -1278,6 +1448,15 @@ function buildCv(jsPDF, D) {
           <ol class="layers">${p.architecture.map((l, i) => `<li data-l="${i}" tabindex="0">${ic(l.icon)}<div><b>${esc(l.label)}</b><p>${esc(l.detail)}</p></div></li>`).join("")}</ol>
         </div>
       </div>
+      ${p.caseStudy ? `<div class="case">
+        <h4>Caso de estudio</h4>
+        <div class="case-grid">
+          <div class="case-box"><b>${ic("target")}Objetivo</b><p>${esc(p.caseStudy.goal)}</p></div>
+          <div class="case-box"><b>${ic("user")}Mi contribución</b><p>${esc(p.caseStudy.role)}</p></div>
+          <div class="case-box"><b>${ic("circle-check")}Resultado</b><p>${esc(p.caseStudy.result)}</p></div>
+          <div class="case-box wide"><b>${ic("mountain")}Desafíos técnicos</b><ul>${p.caseStudy.challenges.map(c => `<li>${esc(c)}</li>`).join("")}</ul></div>
+        </div>
+      </div>` : ""}
       ${p.link ? `<div style="margin-top:24px"><a class="btn btn-orange btn-sm" href="${p.link.href}" target="_blank" rel="noopener noreferrer">${esc(p.link.label)} ${ic("external-link")}</a></div>` : ""}`;
     icons();
     lastFocus = document.activeElement;
@@ -1311,12 +1490,55 @@ function buildCv(jsPDF, D) {
       </div></div>`).join("")}
     </div>`;
 
+  /* ─── servicios ─── */
+  $("#services").innerHTML = DATA.services.map((v, i) => `<div class="reveal s2" style="--d:${(i % 3) * .08}s"><div class="card ${T(v.tone) === "o" ? "o" : ""} pad svc">
+      <span class="ibox t-${T(v.tone)} lift">${ic(v.icon)}</span>
+      <h3 class="lift-s">${esc(v.title)}</h3>
+      <p class="muted">${esc(v.text)}</p>
+    </div></div>`).join("") + `<div class="reveal s6"><div class="card o r-xl pad pad-l" data-tilt="3"><div class="svc-cta">
+      <div class="lift-s"><h3>¿Tienes una idea o necesitas mejorar tu sitio web?</h3><p class="muted">Cuéntame qué necesitas y te respondo con una propuesta.</p></div>
+      <a class="btn btn-orange" href="#contacto" data-preset="Proyecto web">${ic("send")}Solicitar cotización</a>
+    </div></div></div>`;
+  document.addEventListener("click", e => { const a = e.target.closest("[data-preset]"); if (a) $("#fType").value = a.dataset.preset; });
+
+  /* ─── formulario de contacto (sin servidor: prepara el mensaje) ─── */
+  const form = $("#contactForm"), fStatus = $("#fStatus"), born = Date.now();
+  const F = {
+    nombre: [$("#fName"), $("#eName"), v => v.trim().length >= 2 || "Escribe tu nombre."],
+    correo: [$("#fMail"), $("#eMail"), v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || "Escribe un correo válido, por ejemplo nombre@empresa.com."],
+    tipo: [$("#fType"), $("#eType"), v => !!v || "Elige el tipo de consulta."],
+    mensaje: [$("#fMsg"), $("#eMsg"), v => v.trim().length >= 20 || "Cuéntame un poco más: al menos 20 caracteres."]
+  };
+  const check = ([el, er, fn]) => { const r = fn(el.value), ok = r === true; el.setAttribute("aria-invalid", !ok); er.textContent = ok ? "" : r; return ok; };
+  Object.values(F).forEach(f => { f[0].addEventListener("blur", () => f[0].value && check(f)); f[0].addEventListener("input", () => f[0].getAttribute("aria-invalid") === "true" && check(f)); });
+  function valid() {
+    let first = null; Object.values(F).forEach(f => { if (!check(f) && !first) first = f[0]; });
+    if (first) { first.focus(); fStatus.className = "f-status bad"; fStatus.textContent = "Revisa los campos marcados."; return false; }
+    if ($("#fWeb").value || Date.now() - born < 2500) { fStatus.className = "f-status bad"; fStatus.textContent = "Espera unos segundos e inténtalo de nuevo."; return false; }
+    return true;
+  }
+  const vals = () => Object.fromEntries(Object.entries(F).map(([k, f]) => [k, f[0].value.trim()]));
+  form.addEventListener("submit", e => {
+    e.preventDefault(); if (!valid()) return;
+    const d = vals();
+    const href = `mailto:${DATA.email}?subject=${encodeURIComponent(`[Portafolio] ${d.tipo}: ${d.nombre}`)}&body=${encodeURIComponent(`${d.mensaje}\n\n${d.nombre}\n${d.correo}`)}`;
+    location.href = href;
+    fStatus.className = "f-status ok";
+    fStatus.innerHTML = `Se abrió tu app de correo con el mensaje listo. Revísalo y envíalo desde ahí. Si no se abrió nada, escríbeme a <a href="mailto:${DATA.email}" style="text-decoration:underline">${DATA.email}</a>.`;
+  });
+  $("#fWa").addEventListener("click", () => {
+    if (!valid()) return;
+    const d = vals();
+    open(`https://wa.me/${DATA.phoneRaw}?text=${encodeURIComponent(`Hola Alejandro, soy ${d.nombre} (${d.correo}). ${d.tipo}: ${d.mensaje}`)}`, "_blank", "noopener");
+    fStatus.className = "f-status ok"; fStatus.textContent = "Se abrió WhatsApp con tu mensaje. Envíalo desde ahí para que me llegue.";
+  });
+
   /* ─── contacto ─── */
   $("#rows").innerHTML = [
     ["mail", "Correo", DATA.email, `mailto:${DATA.email}`],
     ["phone", "Teléfono", DATA.phone, `tel:+${DATA.phoneRaw}`],
-    ["linkedin", "LinkedIn", "alexvillafuerteleal", DATA.linkedin],
-    ["github", "GitHub", "alexvillafuerteleal", DATA.github]
+    ["github", "GitHub", DATA.githubUser, DATA.github],
+    ...(DATA.linkedin ? [["linkedin", "LinkedIn", decodeURIComponent(DATA.linkedin.replace(/^https?:\/\/(www\.)?/, "")), DATA.linkedin]] : [])
   ].map(([i, k, v, h]) => `<li><a href="${h}" ${h.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : ""}>${ic(i)}<span class="grow"><span class="k">${k}</span><span class="v">${esc(v)}</span></span>${ic("arrow-up-right")}</a></li>`).join("");
   $("#copyBtn").addEventListener("click", async () => {
     const lbl = $("#copyBtn .lbl");
